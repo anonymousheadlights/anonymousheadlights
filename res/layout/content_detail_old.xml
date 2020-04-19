@@ -25,6 +25,9 @@
         TextView prompt_evroom
         TextView cal_list_room
 
+        TextView prompt_evdate
+        TextView cal_list_date
+
         TextView prompt_evtime
         TextView cal_list_time
 
@@ -122,18 +125,30 @@
         android:layout_toRightOf="@id/prompt_evroom"
         android:layout_below="@id/prompt_evbuilding"/>
 
-
+     <TextView
+        android:id="@+id/prompt_evdate"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/string_date"
+        android:layout_below="@id/prompt_evroom"/>
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/cal_list_date"
+        android:layout_toRightOf="@id/prompt_evdate"
+        android:layout_below="@id/prompt_evroom"/>
+    
+     
     <TextView
         android:id="@+id/prompt_evtime"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="@string/string_time"
-        android:layout_below="@id/prompt_evroom"/>
+        android:layout_below="@id/prompt_evdate"/>
     <TextView android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:id="@+id/cal_list_time"
         android:layout_toRightOf="@id/prompt_evtime"
-        android:layout_below="@id/prompt_evroom"/>
+        android:layout_below="@id/prompt_evdate"/>
 
     <TextView
         android:layout_width="wrap_content"
