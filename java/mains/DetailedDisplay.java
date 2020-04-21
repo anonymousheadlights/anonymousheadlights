@@ -13,6 +13,15 @@ import android.widget.Button;
 
 public class DetailedDisplay extends AppCompatActivity {
 
+    Button edit;
+    Button delete;
+
+    TextView name;
+    TextView building;
+    TextView room;
+    TextView time;
+    TextView desc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +29,26 @@ public class DetailedDisplay extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button edit = findViewById(R.id.edit_button);
-        Button delete = findViewById(R.id.delete_button);
+        edit = findViewById(R.id.edit_button);
+        delete = findViewById(R.id.delete_button);
+
+        name = findViewById(R.id.cal_list_name);
+        building = findViewById(R.id.cal_list_building);
+        room = findViewById(R.id.cal_list_room);
+        time = findViewById(R.id.cal_list_time);
+        desc = findViewById(R.id.cal_list_desc);
+
+        //Test Getting that Passed Value
+        String passValue;
+
+        //Sets HomeIntent Equal to Intent Passed by Calling Procedure
+        Intent homeIntent = getIntent();
+
+        //Set String Equal to Passed Value
+        passValue = homeIntent.getStringExtra("pass");
+
+        //Set TextView to Passed Value
+        name.setText(passValue);
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
