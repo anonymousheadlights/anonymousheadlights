@@ -22,9 +22,11 @@ public class HomePage extends AppCompatActivity {
     TextView tomorrow;
     TextView overmorrow;
 
-    ListView today_list;
-    ListView tomorrow_list;
-    ListView overmorrow_list;
+    TextView emptyView;
+
+    ListView todayList;
+    ListView tomorrowList;
+    ListView overmorrowList;
 
     Button goToCalen;
 
@@ -42,32 +44,81 @@ public class HomePage extends AppCompatActivity {
         tomorrow  = (TextView) findViewById(R.id.tomorrow);
         overmorrow = (TextView) findViewById(R.id.overmorrow);
 
-        today_list = (ListView) findViewById(R.id.today_list);
-        tomorrow_list = (ListView) findViewById(R.id.tomorrow_list);
-        overmorrow_list = (ListView) findViewById(R.id.overmorrow_list);
+        todayList = (ListView) findViewById(R.id.today_list);
+        tomorrowList = (ListView) findViewById(R.id.tomorrow_list);
+        overmorrowList = (ListView) findViewById(R.id.overmorrow_list);
 
         goToCalen  = (Button) findViewById(R.id.goToCalen);
 
-        today_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        emptyView = findViewById(R.id.todayEmpty);
+
+        //Create ArrayList list
+        ArrayList<String> todayArray = new ArrayList<>();
+
+        todayArray.add("Test List Item");
+        
+        //Create adapter
+        ArrayAdapter<String> todayAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.row_item, R.id.listItem, todayArray);
+        todayList.setAdapter(todayAdapter);
+        todayList.setEmptyView(emptyView);
+
+
+
+        todayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, SwitchTest.class);
+                String selectedItem = (String) todayList.getItemAtPosition(position);
+
+                Intent intent = new Intent(MainActivity.this, DetailedDisplay.class);
+                String pass1 = "Passed from Today";
+                intent.putExtra("pass", pass1);
                 startActivity(intent);
             }
         });
 
-        tomorrow_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+        //Create ArrayList list
+        ArrayList<String> tomArray = new ArrayList<>();
+
+        tomArray.add("Test List Item");
+
+        //Create adapter
+        ArrayAdapter<String> tomAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.row_item, R.id.listItem, tomArray);
+        tomorrowList.setAdapter(tomAdapter);
+        tomorrowList.setEmptyView(emptyView);
+
+        tomorrowList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, SwitchTest.class);
+                String selectedItem = (String) tomorrowList.getItemAtPosition(position);
+
+                Intent intent = new Intent(MainActivity.this, DetailedDisplay.class);
+                String pass2 = "Passed from Tomorrow";
+                intent.putExtra("pass", pass2);
                 startActivity(intent);
             }
         });
 
-        overmorrow_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //Create ArrayList list
+        ArrayList<String> overArray = new ArrayList<>();
+
+        overArray.add("Test List Item");
+
+        //Create adapter
+        ArrayAdapter<String> overAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.row_item, R.id.listItem, overArray);
+        overmorrowList.setAdapter(overAdapter);
+        overmorrowList.setEmptyView(emptyView);
+
+
+        overmorrowList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, SwitchTest.class);
+                String selectedItem = (String) overmorrowList.getItemAtPosition(position);
+
+                Intent intent = new Intent(MainActivity.this, DetailedDisplay.class);
+                String pass3 = "Passed from Overmorrow";
+                intent.putExtra("pass", pass3);
                 startActivity(intent);
             }
         });
