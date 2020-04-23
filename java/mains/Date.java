@@ -1,4 +1,4 @@
-package com.example.afliesapp_basic_homescreen;
+package com.example.alfie_s_app;
 
 
 public class Date {
