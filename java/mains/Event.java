@@ -34,6 +34,12 @@ public class Event {
     public String getDay(){return day;}
     public String getId(){return id;}
     public String getDescript(){return description;}
+    public void setName(String newName){name = newName;}
+    public void setBuilding(String newBuilding){building = newBuilding;}
+    public void setRoom(String newRoom){room = newRoom;}
+    public void setDay(String newDay){day = newDay;}
+    public void setTime(Date newTime){time = newTime;}
+    public void setDescript(String newDescript){description = newDescript;}
 
     //database stuff here?
     public  boolean addEvent(){return true;}
