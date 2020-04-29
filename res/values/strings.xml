@@ -42,6 +42,12 @@
     <string name="ellis">Ellis Hall</string>
     <string name="vlb">Suzzane von Liebig Center for Science</string>
     <string name="bac">Brumbaugh Academic Center</string>
-
+    <string name="theatre">Halbritter Center for the Performing Arts</string>
+    <string name="good">Good Hall</string>
+    <string name="founders">Founders</string>
+    <string name="library">Beeghly Library</string>
+    <string name="museum">Juniata College Museum of Art</string>
+    <string name="gibbel">Henry H. and Joanie R. Gibbel Stadium</string>
+    <string name="knox">Knox Stadium</string>
     
 </resources>
