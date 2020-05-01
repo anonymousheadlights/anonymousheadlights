@@ -4,21 +4,24 @@ import android.content.Context;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 import androidx.annotation.NonNull;
-import androidx.core.provider.FontsContractCompat;
 
 
 public class dbActions {
 
-//WRITES
+    //WRITES
     static class submit {
         submit(final FirebaseFirestore db, EditText name, EditText building, EditText room, EditText time, EditText description, EditText date) {
 
@@ -56,7 +59,7 @@ public class dbActions {
             String edate = date.getText().toString();
 
             //edit
-            if(!ename.equals("")) {
+            if (!ename.equals("")) {
                 db.collection("Events").document(docID).update("title", ename);
             }
             if (!ebuilding.equals("")) {
@@ -68,17 +71,17 @@ public class dbActions {
             if (!etime.equals("")) {
                 db.collection("Events").document(docID).update("time", etime);
             }
-            if(!edescription.equals("")) {
+            if (!edescription.equals("")) {
                 db.collection("Events").document(docID).update("description", edescription);
             }
-            if(!edate.equals("")) {
+            if (!edate.equals("")) {
                 db.collection("Events").document(docID).update("date", edate);
             }
         }
     } //end of edit
 
     public static class delete {
-        public delete (final FirebaseFirestore db, TextView docID, final Context context) {
+        public delete(final FirebaseFirestore db, TextView docID, final Context context) {
 
             String ddocID = docID.getText().toString();
 
@@ -95,58 +98,37 @@ public class dbActions {
             });
         }
     }//end of delete
-
-//READS
+    
+    //READS
     public static class readAll {
-        public readAll (final CollectionReference colRef, final TextView namereturn, final TextView buildingreturn, final TextView roomreturn, final TextView timereturn, final TextView datereturn, final TextView descriptionreturn, final TextView docID) {
+        public readAll(final CollectionReference colRef, final ArrayList<Event> allData) {
             colRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                     for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                        Event event = documentSnapshot.toObject(Event.class);
+                        Event event = documentSnapshot.toObject(Event.class); //maybe it's not actually creating an Event object????
                         event.setDocID(documentSnapshot.getId());
-
-                        //sets all values on AddEvent to what is in the db
-                        namereturn.setText(event.getTitle());
-                        buildingreturn.setText(event.getBuilding());
-                        roomreturn.setText(event.getRoom());
-                        timereturn.setText(event.getTime());
-                        datereturn.setText(event.getDate());
-                        descriptionreturn.setText(event.getDescription());
-                        docID.setText(event.getDocID());
+                        allData.add(event);
                     }
                 }
             });
         }
     }//end of readall
 
+
     public static class dateSearch {
-        public dateSearch (final CollectionReference colRef, EditText date, final Context context, final TextView namereturn, final TextView buildingreturn, final TextView roomreturn, final TextView timereturn, final TextView datereturn, final TextView descriptionreturn, final TextView docID) {
-
-            String sdate = date.getText().toString();
-
-            colRef.whereEqualTo("date", sdate).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        public dateSearch(final CollectionReference colRef, final ArrayList<Event> dateSearch, String date) {
+            colRef.whereEqualTo("date", date).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                     for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                         Event event = documentSnapshot.toObject(Event.class);
                         event.setDocID(documentSnapshot.getId());
-
-                        namereturn.setText(event.getTitle());
-                        buildingreturn.setText(event.getBuilding());
-                        roomreturn.setText(event.getRoom());
-                        timereturn.setText(event.getTime());
-                        datereturn.setText(event.getDate());
-                        descriptionreturn.setText(event.getDescription());
-                        docID.setText(event.getDocID());
+                        dateSearch.add(event);
                     }
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
                 }
             });
         }
+
     }//end of dateSearch
 }
