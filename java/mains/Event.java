@@ -2,11 +2,7 @@ package com.example.alfie_s_app;
 
 import android.content.Context;
 
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.sql.Struct;
-import java.util.Date;
 
 public class Event {
 
@@ -14,11 +10,16 @@ public class Event {
     private Long time;
     private Context context;
 
-
     final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    final CollectionReference colRef = db.collection("Events");
 
-    public Event() {}
+    public Event() {
+        id = "";
+        title = "";
+        building = "";
+        room = "";
+        description = "";
+        time = 0L;
+    }
     public Event(Context context, String id) {
         this.context = context;
         this.id = id;
@@ -41,6 +42,7 @@ public class Event {
     public String getDate(){return date;}
     public String getId(){return id;}
     public String getDescription(){return description;}
+
     public void setId(String newId){id = newId;}
     public void setTitle(String newTitle){title = newTitle;}
     public void setBuilding(String newBuilding){building = newBuilding;}
@@ -50,9 +52,8 @@ public class Event {
     public void setDescription(String newDescript){description = newDescript;}
 
     //database stuff here?
-    public boolean addEvent(){
+    public void addEvent(){
         new dbActions.submit(db, title, building, room, time, date, description);
-        return true;
     }
 
     public void editEvent(){
