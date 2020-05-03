@@ -1,12 +1,7 @@
 package com.example.alfie_s_app;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
-import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
@@ -14,22 +9,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 
 public class EditDetailed extends AppCompatActivity {
 
@@ -47,10 +32,10 @@ public class EditDetailed extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        room = (EditText) findViewById(R.id.cal_list_room);
-        building = (EditText) findViewById(R.id.cal_list_building);
-        description = (EditText) findViewById(R.id.cal_list_desc);
-        time = (EditText) findViewById(R.id.cal_list_time);
+        room = findViewById(R.id.cal_list_room);
+        building = findViewById(R.id.cal_list_building);
+        description = findViewById(R.id.cal_list_desc);
+        time = findViewById(R.id.cal_list_time);
         save = findViewById(R.id.save_button);
         date = findViewById(R.id.cal_list_date);
         name = findViewById(R.id.cal_list_name);
