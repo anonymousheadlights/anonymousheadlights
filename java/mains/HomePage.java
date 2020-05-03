@@ -67,11 +67,6 @@ public class HomePage extends AppCompatActivity {
         final ArrayList<String> tomEvents = new ArrayList<>();
         final ArrayList<String> overEvents = new ArrayList<>();
 
-        //FIXME get from current day
-        today = "20200502";
-        tomorrow = "20200503";
-        overmorrow = "20200504";
-
         Integer cDay, cMonth, cYear;
         Calendar cal = Calendar.getInstance();
         cDay = cal.get(Calendar.DAY_OF_MONTH);
