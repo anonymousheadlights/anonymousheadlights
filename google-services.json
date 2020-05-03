@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "389618468158",
+    "firebase_url": "https://alfie-s-app.firebaseio.com",
+    "project_id": "alfie-s-app",
+    "storage_bucket": "alfie-s-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389618468158:android:64e8c0b2ccb2ab483d586f",
+        "android_client_info": {
+          "package_name": "com.example.alfie_s_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389618468158-kvsj9p9n0u5bs0j5d835p1ev7sv1d40b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD53g3iy5WWiY85p4dWV5TjoxcZikvehpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389618468158-kvsj9p9n0u5bs0j5d835p1ev7sv1d40b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
