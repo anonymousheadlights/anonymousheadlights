@@ -1,50 +1,65 @@
 package com.example.alfie_s_app;
 
+import android.content.Context;
+
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.sql.Struct;
 import java.util.Date;
 
 public class Event {
 
-    public String id, name, building, room, description, day;
-    public Date time;
+    private String id, title, building, room, description, date;
+    private Long time;
+    private Context context;
+
+
+    final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    final CollectionReference colRef = db.collection("Events");
 
     public Event() {}
-    public Event(String id, String name, String building, String room, Date time, String day) {
+    public Event(Context context, String id) {
+        this.context = context;
         this.id = id;
-        this.name = name;
-        this.building = building;
-        this.room = room;
-        this.time = time;
-        this.day = day;
     }
-    public Event(String id, String name, String building, String room, Date time, String day,
+    public Event(String id, String title, String building, String room, Long time, String date,
                  String description) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.building = building;
         this.room = room;
         this.time = time;
-        this.day = day;
+        this.date = date;
         this.description = description;
     }
 
-    public String getName(){return name;}
+    public String getTitle(){return title;}
     public String getBuilding(){return building;}
     public String getRoom(){return room;}
-    public Date getTime(){return time;}
-    public String getDay(){return day;}
+    public Long getTime(){return time;}
+    public String getDate(){return date;}
     public String getId(){return id;}
-    public String getDescript(){return description;}
-    public void setName(String newName){name = newName;}
+    public String getDescription(){return description;}
+    public void setId(String newId){id = newId;}
+    public void setTitle(String newTitle){title = newTitle;}
     public void setBuilding(String newBuilding){building = newBuilding;}
     public void setRoom(String newRoom){room = newRoom;}
-    public void setDay(String newDay){day = newDay;}
-    public void setTime(Date newTime){time = newTime;}
-    public void setDescript(String newDescript){description = newDescript;}
+    public void setDate(String newDate){date = newDate;}
+    public void setTime(Long newTime){time = newTime;}
+    public void setDescription(String newDescript){description = newDescript;}
 
     //database stuff here?
-    public  boolean addEvent(){return true;}
-    
-    public boolean editEvent(){return true;}
+    public boolean addEvent(){
+        new dbActions.submit(db, title, building, room, time, date, description);
+        return true;
+    }
 
-    public boolean deleteEvent(){return true;}
+    public void editEvent(){
+        new dbActions.edit(db, title, building, room, time, description, date, id);
+    }
+
+    public void deleteEvent(){
+        new dbActions.delete(db, id, context);
+    }
 }
