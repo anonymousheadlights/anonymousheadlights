@@ -2,8 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication">
 
+    <!--TODO ADD THIS-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--TODO END-->
 
     <application
         android:allowBackup="true"
@@ -12,17 +16,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--TODO ADD THIS-->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBzB15GrABQzWmXZgz82zc6zqQkNfbwwEU"/>
-        <service android:name=".GeofenceTransition"/>
+            android:value="AIzaSyBlF_7q8M4a5ZnVi3Ia89kVtHs7ADVXZbY" />
+        <!--TODO END-->
+
         <activity
-            android:name=".GeofenceLocation"
+            android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--TODO ADD THIS-->
+        <service
+            android:name=".GeofenceService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+        <service android:name=".GeofenceTransition" />
+        <!--TODO ADD THIS-->
+
     </application>
 </manifest>
