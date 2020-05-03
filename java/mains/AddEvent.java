@@ -4,68 +4,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.kosalgeek.android.caching.FileCacher;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.telecom.Call;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
 
 
 public class AddEvent extends AppCompatActivity {
-
-    //testingstuff
-    private String string;
-    private ArrayList<String> changeArray = new ArrayList<>();
-    private ArrayList<String> sendArray = new ArrayList<>();
-
 
     EditText name, room, building, description, time, date;
     String newName, newBuilding, newRoom, newDate, newDescript;
     Long newTime;
     Button save;
     Context context;
-    Map<String, Object> map;
-    String justWow;
-
-    //database
-    final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    final CollectionReference colRef = db.collection("Events");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +55,7 @@ public class AddEvent extends AppCompatActivity {
                 newDate = date.getText().toString().trim();
                 //FIXME
                 String tempStr = time.getText().toString().trim();
-                Long tempLong = new Long(0);
+                Long tempLong = 0L;
                 try {
                     tempLong = Long.parseLong(tempStr);
                 } catch (NumberFormatException nfe) {
@@ -149,14 +104,6 @@ public class AddEvent extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void sendToast(String string){
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(getApplicationContext(), string,
-                    duration);
-            toast.show();
-
     }
 
 }
