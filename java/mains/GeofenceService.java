@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.alfie_s_app;
 
 import android.Manifest;
 import android.app.Notification;
@@ -37,7 +37,7 @@ import static com.google.android.gms.location.Geofence.NEVER_EXPIRE;
 public class GeofenceService extends Service implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     private Location lastLocation;
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = HomePage.class.getSimpleName();
     private GeofencingClient client;
     private Geofence area;
     private FusedLocationProviderClient fusedLocationClient;
@@ -79,19 +79,17 @@ public class GeofenceService extends Service implements ActivityCompat.OnRequest
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         //test locations
-        setGeofence("ntTEST", 39.1188, -76.7057, 6000.0f);
-        setGeofence("kdTEST", 40.032487, -78.885948, 60.0f);
-        setGeofence("@string/ellis", 40.500409,  -78.014388, 90.0f);
-        setGeofence("@string/bac", 40.501924,  -78.018400, 200.0f);
-        setGeofence("@string/vlb", 40.499332,  -78.015895, 100.0f);
-        setGeofence("@string/kennedy", 40.500743,  -78.015450, 100.0f);
-        setGeofence("@string/halb", 40.501049,  -78.016748, 70.0f);
-        setGeofence("@string/good", 40.499438,  -78.017843, 90.0f);
-        setGeofence("@string/founders", 40.499418,  -78.016673, 60.0f);
-        setGeofence("@string/library", 40.500490,  -78.017312, 70.0f);
-        setGeofence("@string/museum", 40.498912,  -78.017531, 60.0f);
-        setGeofence("@string/gibbel", 40.503150,  -78.015246, 100.0f);
-        setGeofence("@string/knox", 40.498924,  -78.014629, 120.0f);
+        setGeofence("Ellis Hall", 40.500409,  -78.014388, 90.0f);
+        setGeofence("Brumbaugh Academic Center", 40.501924,  -78.018400, 200.0f);
+        setGeofence("Suzzane von Liebig Center for Science", 40.499332,  -78.015895, 100.0f);
+        setGeofence("Kennedy Sports and Recreation Center", 40.500743,  -78.015450, 100.0f);
+        setGeofence("Hallbriter", 40.501049,  -78.016748, 70.0f);
+        setGeofence("Good Hall", 40.499438,  -78.017843, 90.0f);
+        setGeofence("Founders Hall", 40.499418,  -78.016673, 60.0f);
+        setGeofence("Beeghly Library", 40.500490,  -78.017312, 70.0f);
+        setGeofence("Juniata College Museum of Arts", 40.498912,  -78.017531, 60.0f);
+        setGeofence("Gibbel Stadium", 40.503150,  -78.015246, 100.0f);
+        setGeofence("Knox Stadium", 40.498924,  -78.014629, 120.0f);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
             startMyOwnForeground();
@@ -119,7 +117,7 @@ public class GeofenceService extends Service implements ActivityCompat.OnRequest
 
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
             Notification notification = notificationBuilder.setOngoing(true)
-                    .setSmallIcon(R.drawable.anonheadlight)
+                    .setSmallIcon(R.mipmap.ic_launcher_round)
                     .setContentTitle("App is running in background")
                     .setPriority(NotificationManager.IMPORTANCE_MIN)
                     .setCategory(Notification.CATEGORY_SERVICE)
@@ -129,7 +127,7 @@ public class GeofenceService extends Service implements ActivityCompat.OnRequest
     }
 
     private void startForeground() {
-        Intent notificationIntent = new Intent(this, MainActivity.class);
+        Intent notificationIntent = new Intent(this, HomePage.class);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
                 notificationIntent, 0);
@@ -137,7 +135,7 @@ public class GeofenceService extends Service implements ActivityCompat.OnRequest
         startForeground(NOTIF_ID, new NotificationCompat.Builder(this,
                 NOTIF_CHANNEL_ID) // don't forget create a notification channel first
                 .setOngoing(true)
-                .setSmallIcon(R.drawable.anonheadlight)
+                .setSmallIcon(R.drawable.event_image)
                 .setContentTitle(getString(R.string.app_name))
                 .setContentText("Service is running background")
                 .setContentIntent(pendingIntent)
@@ -179,7 +177,7 @@ public class GeofenceService extends Service implements ActivityCompat.OnRequest
 
     // Create a Intent send by the notification
     public static Intent makeNotificationIntent(Context context, String msg) {
-        Intent intent = new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, HomePage.class);
         intent.putExtra(NOTIFICATION_MSG, msg);
         return intent;
     }
