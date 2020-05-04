@@ -15,9 +15,11 @@
     <string name="tomorrow">Tomorrow</string>
     <string name="overmorrow">Overmorrow</string>
     <string name="goToCalen">Go To Full Calendar</string>
+    <string name="emptyList">No Events</string>
     
     <string name="no_settings">Notification Settings</string>
     <string name="ad_login">Admin Login</string>
+    <string name="log_out">Log Out</string>
     <string name="ad_event">Add Event</string>
 
     <string name="string_edit">Edit</string>
@@ -38,16 +40,17 @@
     <!-- notification settings -->
     <string name="notifications">Notification Settings</string>
     <string name="allNotifStr">Turn On All Notifications</string>
-    <string name="kennedy">Kennedy Sports and Recreation Center</string>
+    <string name="kennedy">Kennedy Center</string>
     <string name="ellis">Ellis Hall</string>
-    <string name="vlb">Suzzane von Liebig Center for Science</string>
-    <string name="bac">Brumbaugh Academic Center</string>
-    <string name="theatre">Halbritter Center for the Performing Arts</string>
-    <string name="good">Good Hall</string>
+    <string name="vlb">VLB</string>
+    <string name="bac">BAC</string>
     <string name="founders">Founders Hall</string>
-    <string name="library">Beeghly Library</string>
-    <string name="museum">Juniata College Museum of Art</string>
-    <string name="gibbel">Henry H. and Joanie R. Gibbel Stadium</string>
+    <string name="quad">Quad</string>
+    <string name="good">Good Hall</string>
+    <string name="theatre">Hallbriter</string>
+    <string name="library">Library</string>
+    <string name="museum">Museum</string>
+    <string name="gibbel">Gibbel Stadium</string>
     <string name="knox">Knox Stadium</string>
     
 </resources>
