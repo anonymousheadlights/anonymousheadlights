@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,167 +8,187 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".DetailedDisplay">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-      >
-    <!-- Event Details Page Dictionary
-        Toolbar toolbar
-
-        Button edit_button
-        Button delete_button
-
-        TextView ev_details
-        ImageView event_image
-
-        TextView prompt_evname
-        TextView cal_list_name
-
-        TextView prompt_evbuilding
-        TextView cal_list_building
-
-        TextView prompt_evroom
-        TextView cal_list_room
-
-        TextView prompt_evtime
-        TextView cal_list_time
-
-        TextView prompt_evdesc
-        TextView cal_list_desc
-
-        Button save_button
-    -->
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-
-        android:background="@color/colorPrimaryDark"
-        app:popupTheme="@style/TextAppearance.AppCompat.Widget.PopupMenu.Header"
+        android:layout_height="match_parent"
         >
-    </androidx.appcompat.widget.Toolbar>
+        <!-- Event Details Page Dictionary
+            Toolbar toolbar
+            Button edit_button
+            Button delete_button
+            TextView ev_details
+            ImageView event_image
+            TextView prompt_evname
+            TextView cal_list_name
+            TextView prompt_evbuilding
+            TextView cal_list_building
+            TextView prompt_evroom
+            TextView cal_list_room
+            TextView prompt_evtime
+            TextView cal_list_time
+            TextView prompt_evdesc
+            TextView cal_list_desc
+            Button save_button
+        -->
 
-<!--Edit/Delete Buttons-->
-    <Button
-        android:id="@+id/edit_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/string_edit"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="40dp"
-                />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
 
-    <Button
-        android:id="@+id/delete_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="110dp"
-        android:layout_toRightOf="@id/edit_button"
-        android:text="@string/string_delete" />
-<!--title and image-->
+            android:background="@color/toolbar_color"
+            app:popupTheme="@style/TextAppearance.AppCompat.Widget.PopupMenu.Header"
+            >
+        </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/event_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ev_details"
-        android:layout_below="@+id/delete_button"
-        android:layout_marginLeft="10dp"
-        />
+        <!--Edit/Delete Buttons-->
+        <Button
+            android:id="@+id/edit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_edit"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="75dp"
+            android:background="@drawable/list_view_border_inverse"/>
 
-    <ImageView
-        android:id="@+id/event_image"
-        android:layout_width="410dp"
-        android:layout_height="200dp"
-        android:layout_below="@+id/event_details"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/blu"
-        android:gravity="center_horizontal"
-        />
+        <Button
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="75dp"
+            android:layout_alignParentRight="true"
+            android:text="@string/string_delete"
+            android:textColor="@color/colorPrimaryDark"
+            android:background="@drawable/list_view_border"/>
+        <!--title and image-->
 
-<!--Event Details-->
-    <TextView
-        android:id="@+id/prompt_evname"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/string_name"
-        android:layout_below="@+id/event_image"
-        android:layout_marginLeft="10dp"/>
-    <TextView
-        android:id="@+id/cal_list_name"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_toRightOf="@id/prompt_evname"
-        android:layout_below="@id/event_image"
-        android:layout_marginLeft="10dp"/>
+        <TextView
+            android:id="@+id/event_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ev_details"
+            android:textSize="27sp"
+            android:layout_below="@+id/edit_button"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginLeft="10dp"
+            />
 
-    <TextView
-        android:id="@+id/prompt_evbuilding"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/string_building"
-        android:layout_below="@id/prompt_evname"
-        android:layout_marginLeft="10dp"/>
-    <TextView android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:id="@+id/cal_list_building"
-        android:layout_toRightOf="@id/prompt_evbuilding"
-        android:layout_below="@id/prompt_evname"
-        android:layout_marginLeft="10dp"/>
+        <!--Event Details-->
+        <TextView
+            android:id="@+id/prompt_evname"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/string_name"
+            android:textSize="21sp"
+            android:layout_below="@+id/event_details"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="@dimen/default_margin"/>
+        <TextView
+            android:id="@+id/cal_list_name"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@id/prompt_evname"
+            android:layout_below="@id/event_details"
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/default_margin"/>
 
-
-    <TextView
-        android:id="@+id/prompt_evroom"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/string_room"
-        android:layout_below="@id/prompt_evbuilding"
-        android:layout_marginLeft="10dp"/>
-    <TextView
-        android:id="@+id/cal_list_room"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_toRightOf="@id/prompt_evroom"
-        android:layout_below="@id/prompt_evbuilding"
-        android:layout_marginLeft="10dp"/>
-
-
-    <TextView
-        android:id="@+id/prompt_evtime"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/string_time"
-        android:layout_below="@id/prompt_evroom"
-        android:layout_marginLeft="10dp"/>
-    <TextView android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:id="@+id/cal_list_time"
-        android:layout_toRightOf="@id/prompt_evtime"
-        android:layout_below="@id/prompt_evroom"
-        android:layout_marginLeft="10dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/string_desc"
-        android:id="@+id/prompt_evdesc"
-        android:layout_below="@id/prompt_evtime"
-        android:layout_marginLeft="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cal_list_desc"
-        android:layout_toRightOf="@id/prompt_evdesc"
-        android:layout_below="@id/prompt_evtime"
-        android:layout_marginLeft="10dp"
-
-    />
+        <TextView
+            android:id="@+id/prompt_evbuilding"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/string_building"
+            android:layout_below="@id/prompt_evname"
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/cal_list_building"
+            android:layout_toRightOf="@id/prompt_evbuilding"
+            android:layout_below="@id/prompt_evname"
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
 
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/prompt_evroom"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/string_room"
+            android:layout_below="@id/prompt_evbuilding"
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
+        <TextView
+            android:id="@+id/cal_list_room"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@id/prompt_evroom"
+            android:layout_below="@id/prompt_evbuilding"
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
 
-</ScrollView>
+        <TextView
+            android:id="@+id/prompt_evdate"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/string_date"
+            android:layout_below="@id/prompt_evroom"
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/cal_list_date"
+            android:layout_toRightOf="@id/prompt_evdate"
+            android:layout_below="@id/prompt_evroom"
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
+
+        <TextView
+            android:id="@+id/prompt_evtime"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/string_time"
+            android:layout_below="@id/prompt_evdate"
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/cal_list_time"
+            android:layout_toRightOf="@id/prompt_evtime"
+            android:layout_below="@id/prompt_evdate"
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_desc"
+            android:id="@+id/prompt_evdesc"
+            android:layout_below="@id/prompt_evtime"
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cal_list_desc"
+            android:layout_toRightOf="@id/prompt_evdesc"
+            android:layout_below="@id/prompt_evtime"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:layout_marginTop="@dimen/half_it"/>
 
 
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
