@@ -64,11 +64,15 @@ public class DetailedDisplay extends AppCompatActivity {
                 name.setText(event.getTitle());
                 building.setText(event.getBuilding());
                 room.setText(event.getRoom());
-                //FIXME formatting
-                date.setText(event.getDate());
-                //FIXME formatting
-                time.setText(event.getTime().toString());
                 desc.setText(event.getDescription());
+
+                String string;
+                string = event.getDate().substring(4, 6) + "/" + event.getDate().substring(6, 8) +
+                        "/" + event.getDate().substring(0, 4);
+                date.setText(string);
+                string = event.getTime().substring(0, 2) + ":" + event.getTime().substring(2, 4) +
+                        " " + event.getTime().substring(4, 6);
+                time.setText(string);
 
             }
         });
