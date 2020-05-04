@@ -10,15 +10,18 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 
 public class AddEvent extends AppCompatActivity {
 
-    EditText name, room, building, description, time, date;
-    String newName, newBuilding, newRoom, newDate, newDescript;
-    Long newTime;
+    EditText name, room, description;
+    String newName, newBuilding, newRoom, newDate, newTime, newDescript;
+    String newMonth, newDay, newYear, newHour, newMinute, newAmPm;
     Button save;
     Context context;
 
@@ -35,12 +38,149 @@ public class AddEvent extends AppCompatActivity {
 
         //converts text inputs into strings
         name = findViewById(R.id.cal_list_name);
-        building =findViewById(R.id.cal_list_building);
         room = findViewById(R.id.cal_list_room);
-        date = findViewById(R.id.cal_list_date);
-        time = findViewById(R.id.cal_list_time);
         description = findViewById(R.id.cal_list_desc);
         save = findViewById(R.id.save_button);
+
+        final Spinner buildingSpinner, monthSpinner, daySpinner, yearSpinner, hourSpinner,
+                minuteSpinner, ampmSpinner;
+
+        buildingSpinner = findViewById(R.id.building_spinner);
+        monthSpinner = findViewById(R.id.month_spinner);
+        daySpinner = findViewById(R.id.day_spinner);
+        yearSpinner = findViewById(R.id.year_spinner);
+        hourSpinner = findViewById(R.id.hour_spinner);
+        minuteSpinner = findViewById(R.id.minute_spinner);
+        ampmSpinner = findViewById(R.id.am_pm_spinner);
+
+        ArrayAdapter<CharSequence> adapter;
+
+        //set up all adapters for drop downs
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.building_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        buildingSpinner.setAdapter(adapter);
+
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.month_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        monthSpinner.setAdapter(adapter);
+
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.day_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        daySpinner.setAdapter(adapter);
+
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.year_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        yearSpinner.setAdapter(adapter);
+
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.hour_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        hourSpinner.setAdapter(adapter);
+
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.minute_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        minuteSpinner.setAdapter(adapter);
+
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.am_pm_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ampmSpinner.setAdapter(adapter);
+
+        buildingSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                newBuilding = (String) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                newBuilding = "Other";
+            }
+        });
+
+        monthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                newMonth = (String) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                newMonth = "01";
+            }
+        });
+
+        daySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                newDay = (String) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                newDay = "01";
+            }
+        });
+
+        yearSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                newYear = (String) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                newYear = "2020";
+            }
+        });
+
+        hourSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                newHour = (String) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                newHour = "12";
+            }
+        });
+
+        minuteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                newMinute = (String) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                newMinute = "00";
+            }
+        });
+
+        ampmSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                newAmPm = (String) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                newAmPm = "AM";
+            }
+        });
 
         final Event newEvent = new Event();
         newEvent.setId(id);
@@ -49,23 +189,12 @@ public class AddEvent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 newName = name.getText().toString().trim();
-                newBuilding = building.getText().toString().trim();
                 newRoom = room.getText().toString().trim();
-                //FIXME
-                newDate = date.getText().toString().trim();
-                //FIXME
-                String tempStr = time.getText().toString().trim();
-                Long tempLong = 0L;
-                try {
-                    tempLong = Long.parseLong(tempStr);
-                } catch (NumberFormatException nfe) {
-                    System.out.println("NumberFormatException: " + nfe.getMessage());
-                }
-                newTime = tempLong;
+                newDate = newYear + newMonth + newDay;
+                newTime = newHour + newMinute + newAmPm;
                 newDescript = description.getText().toString().trim();
                 Event event = new Event(id, newName, newBuilding, newRoom, newTime, newDate,
                         newDescript);
-
                 event.addEvent();
                 Intent intent = new Intent(getApplicationContext(), HomePage.class);
                 startActivity(intent);
