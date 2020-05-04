@@ -5,8 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context=".HomePage"
+    tools:showIn="@layout/home_page"
+    android:background="#ffffff">
 
     <!--
     <ScrollView
@@ -22,19 +23,14 @@
         <!-- Home Page Dictionary
             Toolbar home_toolbar
                 TextView home_title
-
             TextView app_title
             ImageView anon_light
-
             TextView today
             ListView today_list
-
             TextView tomorrow
             ListView tomorrow_list
-
             TextView overmorrow
             ListView overmorrow_list
-
             Button goToCalen
         -->
 
@@ -43,20 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
 
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/toolbar_color"
             app:popupTheme="@style/TextAppearance.AppCompat.Widget.PopupMenu.Header">
-
-
-
-            <TextView
-                android:id="@+id/home_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/homepage"
-
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -64,7 +48,7 @@
             android:id="@+id/app_title"
             android:layout_width="175dp"
             android:layout_height="50dp"
-            android:text="@string/app_title"
+            android:text="@string/app_name"
             android:textSize="35sp"
             android:textColor="@android:color/black"
             android:visibility="visible"
@@ -78,7 +62,7 @@
 
         <ImageView
             android:id="@+id/anon_light"
-            android:src="@drawable/anonheadlight"
+            android:src="@drawable/event_image"
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:contentDescription="@string/logoDescript"
@@ -103,11 +87,11 @@
             android:layout_marginTop="65dp"
             android:text="@string/today"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="400dp"
-            android:layout_height="110dp"
+            android:layout_height="100dp"
             android:layout_below="@+id/today"
             android:layout_centerHorizontal="true"
             android:background="@drawable/list_view_border"
@@ -117,7 +101,6 @@
                 android:id="@+id/today_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
                 android:background="@drawable/list_view_border"
 
                 />
@@ -129,8 +112,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/emptyList"
 
-                android:textColor="#000000"
-                android:textSize="25sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="27sp"
                 android:paddingHorizontal="70dp"
                 android:paddingVertical="35dp"
 
@@ -143,19 +126,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tomorrow"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textColor="@android:color/black"
 
             android:layout_centerHorizontal="false"
             android:layout_below="@+id/today"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="100dp"
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"
             />
 
         <LinearLayout
             android:layout_width="400dp"
-            android:layout_height="110dp"
+            android:layout_height="100dp"
             android:layout_below="@+id/tomorrow"
             android:layout_centerHorizontal="true"
             android:background="@drawable/list_view_border"
@@ -164,7 +147,7 @@
             <ListView
                 android:id="@+id/tomorrow_list"
                 android:layout_width="400dp"
-                android:layout_height="110dp"
+                android:layout_height="100dp"
 
                 android:background="@drawable/list_view_border"
                 />
@@ -176,7 +159,7 @@
                 android:text="@string/emptyList"
 
                 android:textColor="#000000"
-                android:textSize="25sp"
+                android:textSize="27sp"
                 android:paddingHorizontal="70dp"
                 android:paddingVertical="35dp"
 
@@ -189,12 +172,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/overmorrow"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textColor="@android:color/black"
 
             android:layout_centerHorizontal="false"
             android:layout_below="@+id/tomorrow"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="100dp"
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"
             />
@@ -202,7 +185,7 @@
 
         <LinearLayout
             android:layout_width="400dp"
-            android:layout_height="110dp"
+            android:layout_height="100dp"
             android:layout_below="@+id/overmorrow"
             android:layout_centerHorizontal="true"
             android:background="@drawable/list_view_border"
@@ -211,11 +194,10 @@
             <ListView
                 android:id="@+id/overmorrow_list"
                 android:layout_width="400dp"
-                android:layout_height="110dp"
+                android:layout_height="100dp"
 
                 android:background="@drawable/list_view_border"
                 />
-
             <TextView
                 android:id="@+id/overEmpty"
                 android:layout_width="wrap_content"
@@ -223,7 +205,7 @@
                 android:text="@string/emptyList"
 
                 android:textColor="#000000"
-                android:textSize="25sp"
+                android:textSize="27sp"
                 android:paddingHorizontal="70dp"
                 android:paddingVertical="35dp"
 
@@ -234,7 +216,7 @@
         <Button
             android:id="@+id/goToCalen"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
 
 
             android:text="@string/goToCalen"
