@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--For the spinners on EditDetailed-->
+    <string-array name="building_array">
+        <item>@string/kennedy</item>
+        <item>@string/ellis</item>
+        <item>@string/vlb</item>
+        <item>@string/bac</item>
+        <item>@string/founders</item>
+        <item>@string/quad</item>
+        <item>@string/gibbel</item>
+        <item>@string/knox</item>
+        <item>@string/library</item>
+        <item>@string/theatre</item>
+        <item>@string/museum</item>
+        <item>South</item>
+        <item>Tussey</item>
+        <item>Terrace</item>
+        <item>Lesher</item>
+        <item>Sherwood</item>
+        <item>Sunderland</item>
+        <item>Nathan</item>
+        <item>Pink House</item>
+        <item>American House</item>
+        <item>Eco House</item>
+        <item>Cloister</item>
+        <item>East Houses</item>
+        <item>World Language Center</item>
+        <item>Stone Church</item>
+        <item>Sill Business Building</item>
+        <item>Kepple Hall</item>
+        <item>Unity House</item>
+        <item>Oller Center</item>
+    </string-array>
+    <string-array name="month_array">
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+    <string-array name="day_array">
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+    </string-array>
+    <string-array name="year_array">
+        <item>2020</item>
+        <item>2021</item>
+        <item>2022</item>
+        <item>2023</item>
+        <item>2024</item>
+        <item>2025</item>
+        <item>2026</item>
+        <item>2027</item>
+        <item>2028</item>
+        <item>2029</item>
+        <item>2030</item>
+        <item>2031</item>
+        <item>2032</item>
+    </string-array>
+    <string-array name="hour_array">
+        <item>12</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+    </string-array>
+    <string-array name="minute_array">
+        <item>00</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+    </string-array>
+    <string-array name="am_pm_array">
+        <item>AM</item>
+        <item>PM</item>
+    </string-array>
+</resources>
