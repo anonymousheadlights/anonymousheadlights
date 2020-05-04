@@ -6,8 +6,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Event {
 
-    private String id, title, building, room, description, date;
-    private Long time;
+    private String id, title, building, room, description, date, time;
     private Context context;
 
     final FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -18,13 +17,13 @@ public class Event {
         building = "";
         room = "";
         description = "";
-        time = 0L;
+        time = "";
     }
     public Event(Context context, String id) {
         this.context = context;
         this.id = id;
     }
-    public Event(String id, String title, String building, String room, Long time, String date,
+    public Event(String id, String title, String building, String room, String time, String date,
                  String description) {
         this.id = id;
         this.title = title;
@@ -38,7 +37,7 @@ public class Event {
     public String getTitle(){return title;}
     public String getBuilding(){return building;}
     public String getRoom(){return room;}
-    public Long getTime(){return time;}
+    public String getTime(){return time;}
     public String getDate(){return date;}
     public String getId(){return id;}
     public String getDescription(){return description;}
@@ -48,7 +47,7 @@ public class Event {
     public void setBuilding(String newBuilding){building = newBuilding;}
     public void setRoom(String newRoom){room = newRoom;}
     public void setDate(String newDate){date = newDate;}
-    public void setTime(Long newTime){time = newTime;}
+    public void setTime(String newTime){time = newTime;}
     public void setDescription(String newDescript){description = newDescript;}
 
     //database stuff here?
