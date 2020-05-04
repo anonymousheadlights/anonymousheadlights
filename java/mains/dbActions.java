@@ -17,7 +17,7 @@ public class dbActions {
 
     //WRITES
     static class submit {
-        submit(final FirebaseFirestore db, String name, String building, String room, Long time,
+        submit(final FirebaseFirestore db, String name, String building, String room, String time,
                String date, String description) {
             //create map
             Map<String, Object> event = new HashMap<>();
@@ -35,7 +35,7 @@ public class dbActions {
 
     public static class edit {
         public edit(final FirebaseFirestore db, String name, String building, String room,
-                    long time, String description, String date, String docID) {
+                    String time, String description, String date, String docID) {
 
             //edit
             if (!name.equals("")) {
@@ -50,8 +50,7 @@ public class dbActions {
                 db.collection("Events").document(docID)
                         .update("room", room);
             }
-            //FIXME database change to long variable
-            if (time != 0) {
+            if (!time.equals("")) {
                 db.collection("Events").document(docID)
                         .update("time", time);
             }
