@@ -51,7 +51,7 @@ public class CalendarButton extends AppCompatActivity {
         //get current day for initial database call
         Integer cDay, cMonth, cYear;
         String today;
-        Calendar cal = Calendar.getInstance();
+        final Calendar cal = Calendar.getInstance();
         cDay = cal.get(Calendar.DAY_OF_MONTH);
         cMonth = cal.get(Calendar.MONTH) + 1;
         cYear = cal.get(Calendar.YEAR);
@@ -81,7 +81,7 @@ public class CalendarButton extends AppCompatActivity {
                                 i++;
                                 dayEvents.add((String) document.get("title"));
                                 ArrayAdapter<String> todayAdapter = new ArrayAdapter<>(
-                                        getApplicationContext(), R.layout.row_item,
+                                        getApplicationContext(), R.layout.row_item_inverse,
                                         R.id.listItem, dayEvents);
                                 calList.setAdapter(todayAdapter);
                                 calList.setEmptyView(findViewById(R.id.cal_empty));
@@ -117,6 +117,9 @@ public class CalendarButton extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                 dayEvents.clear();
+                                ArrayAdapter<String> todayAdapter;
+                                calList.setAdapter(null);
+                                calList.setEmptyView(findViewById(R.id.cal_empty));
                                 if (task.isSuccessful()) {
                                     int i = 0;
                                     for (QueryDocumentSnapshot document : task.getResult()) {
@@ -124,8 +127,8 @@ public class CalendarButton extends AppCompatActivity {
                                         intent.putExtra(intentName, document.getId());
                                         i++;
                                         dayEvents.add((String) document.get("title"));
-                                        ArrayAdapter<String> todayAdapter = new ArrayAdapter<>(
-                                                getApplicationContext(), R.layout.row_item,
+                                        todayAdapter = new ArrayAdapter<>(
+                                                getApplicationContext(), R.layout.row_item_inverse,
                                                 R.id.listItem, dayEvents);
                                         calList.setAdapter(todayAdapter);
                                         calList.setEmptyView(findViewById(R.id.cal_empty));
