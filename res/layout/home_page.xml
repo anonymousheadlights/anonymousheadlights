@@ -1,232 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomePage"
-    tools:showIn="@layout/home_page"
-    android:background="#ffffff">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".CalendarButton">
 
-    <!--
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        -->
-
+    <!--Menu set-up-->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <!-- Home Page Dictionary
-            Toolbar home_toolbar
-                TextView home_title
-            TextView app_title
-            ImageView anon_light
-            TextView today
-            ListView today_list
-            TextView tomorrow
-            ListView tomorrow_list
-            TextView overmorrow
-            ListView overmorrow_list
-            Button goToCalen
-        -->
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/home_toolbar"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-
             android:background="@color/toolbar_color"
-            app:popupTheme="@style/TextAppearance.AppCompat.Widget.PopupMenu.Header">
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-        </androidx.appcompat.widget.Toolbar>
-
-        <TextView
-            android:id="@+id/app_title"
-            android:layout_width="175dp"
-            android:layout_height="50dp"
-            android:text="@string/app_name"
-            android:textSize="35sp"
-            android:textColor="@android:color/black"
-            android:visibility="visible"
-
-            android:layout_below="@+id/home_toolbar"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginStart="25dp"
-
-            />
-
-        <ImageView
-            android:id="@+id/anon_light"
-            android:src="@drawable/event_image"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-            android:contentDescription="@string/logoDescript"
-
-            android:layout_toRightOf="@+id/app_title"
-            android:layout_toEndOf="@+id/app_title"
-            android:layout_below="@+id/home_toolbar"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginStart="60dp"
-            />
-
-        <TextView
-            android:id="@+id/today"
+        <CalendarView
+            android:id="@+id/calendar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/app_title"
-            android:layout_centerHorizontal="false"
-            android:layout_marginStart="15dp"
-
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="65dp"
-            android:text="@string/today"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
+            android:layout_below="@+id/toolbar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/default_margin"
+            android:contextClickable="true" />
         <LinearLayout
             android:layout_width="400dp"
-            android:layout_height="100dp"
-            android:layout_below="@+id/today"
+            android:layout_height="200dp"
+            android:layout_below="@+id/calendar"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/list_view_border"
+            android:layout_marginTop="@dimen/default_margin"
+            android:background="@drawable/list_view_border_inverse"
             android:orientation="vertical">
 
             <ListView
-                android:id="@+id/today_list"
-                android:layout_width="match_parent"
+                android:id="@+id/calendar_list"
+                android:layout_width="400dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/list_view_border"
-
-                />
-
+                android:background="@drawable/list_view_border_inverse" />
 
             <TextView
-                android:id="@+id/todayEmpty"
+                android:id="@+id/cal_empty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="@string/emptyList"
-
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="27sp"
-                android:paddingHorizontal="70dp"
-                android:paddingVertical="35dp"
-
-                />
+                android:textColor="@color/colorPrimary"
+                android:textSize="27sp" />
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/tomorrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tomorrow"
-            android:textSize="20sp"
-            android:textColor="@android:color/black"
-
-            android:layout_centerHorizontal="false"
-            android:layout_below="@+id/today"
-            android:layout_marginTop="100dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginStart="15dp"
-            />
-
-        <LinearLayout
-            android:layout_width="400dp"
-            android:layout_height="100dp"
-            android:layout_below="@+id/tomorrow"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/list_view_border"
-            android:orientation="vertical">
-
-            <ListView
-                android:id="@+id/tomorrow_list"
-                android:layout_width="400dp"
-                android:layout_height="100dp"
-
-                android:background="@drawable/list_view_border"
-                />
-
-            <TextView
-                android:id="@+id/tomEmpty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/emptyList"
-
-                android:textColor="#000000"
-                android:textSize="27sp"
-                android:paddingHorizontal="70dp"
-                android:paddingVertical="35dp"
-
-                />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/overmorrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/overmorrow"
-            android:textSize="20sp"
-            android:textColor="@android:color/black"
-
-            android:layout_centerHorizontal="false"
-            android:layout_below="@+id/tomorrow"
-            android:layout_marginTop="100dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginStart="15dp"
-            />
-
-
-        <LinearLayout
-            android:layout_width="400dp"
-            android:layout_height="100dp"
-            android:layout_below="@+id/overmorrow"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/list_view_border"
-            android:orientation="vertical">
-
-            <ListView
-                android:id="@+id/overmorrow_list"
-                android:layout_width="400dp"
-                android:layout_height="100dp"
-
-                android:background="@drawable/list_view_border"
-                />
-            <TextView
-                android:id="@+id/overEmpty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/emptyList"
-
-                android:textColor="#000000"
-                android:textSize="27sp"
-                android:paddingHorizontal="70dp"
-                android:paddingVertical="35dp"
-
-                />
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/goToCalen"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-
-
-            android:text="@string/goToCalen"
-            android:textSize="18sp"
-
-            android:layout_alignParentBottom="true"
-            />
-
     </RelativeLayout>
-    <!--
-    </ScrollView>
-    -->
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
