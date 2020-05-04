@@ -35,7 +35,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/toolbar_color"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         <Button
@@ -43,8 +43,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/string_save"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="150dp"
+            android:layout_marginTop="60dp"
+            android:layout_centerHorizontal="true"
             />
 
         <TextView
@@ -52,7 +52,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ev_details"
+            android:textSize="27sp"
             android:layout_below="@+id/save_button"
+            android:layout_marginTop="@dimen/default_margin"
             android:layout_marginLeft="10dp"
             />
 
@@ -62,36 +64,38 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="@string/string_name"
+            android:textSize="21sp"
             android:layout_below="@+id/event_details"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="@dimen/default_margin"/>
         <EditText
             android:inputType="text|textCapWords|textAutoCorrect"
             android:id="@+id/cal_list_name"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_toRightOf="@id/prompt_evname"
-            android:layout_below="@id/save_button"
+            android:layout_below="@id/event_details"
             android:layout_marginLeft="10dp"
-            android:textSize="10dp"/>
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/default_margin"/>
 
         <TextView
             android:id="@+id/prompt_evbuilding"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="@string/string_building"
-            android:layout_below="@id/prompt_evname"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"/>
-        <EditText
-            android:inputType="text|textCapWords|textAutoCorrect"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/cal_list_building"
-            android:layout_toRightOf="@id/prompt_evbuilding"
-            android:layout_marginLeft="10dp"
             android:layout_below="@id/cal_list_name"
-            android:textSize="10dp"
-            />
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
+        <Spinner
+            android:id="@+id/building_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/prompt_evbuilding"
+            android:layout_below="@id/cal_list_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="@dimen/half_it"/>
 
 
         <TextView
@@ -99,72 +103,124 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="@string/string_room"
-            android:layout_below="@id/prompt_evbuilding"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_below="@id/building_spinner"
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
         <EditText
+            android:inputType="text|textCapWords|textAutoCorrect"
             android:id="@+id/cal_list_room"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_toRightOf="@id/prompt_evroom"
-            android:layout_below="@id/cal_list_building"
+            android:layout_below="@id/building_spinner"
             android:layout_marginLeft="10dp"
-            android:textSize="10dp"/>
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/string_date"
             android:id="@+id/prompt_evdate"
-            android:layout_below="@id/prompt_evroom"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"/>
-        <EditText
-            android:inputType="text|textCapWords|textAutoCorrect"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/string_date"
+            android:layout_below="@id/cal_list_room"
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
+        <Spinner
+            android:id="@+id/month_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/cal_list_date"
             android:layout_toRightOf="@id/prompt_evdate"
             android:layout_below="@id/cal_list_room"
             android:layout_marginLeft="10dp"
-            android:textSize="15dp" />
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
+        <Spinner
+            android:id="@+id/day_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/month_spinner"
+            android:layout_below="@id/cal_list_room"
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
+        <Spinner
+            android:id="@+id/year_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/day_spinner"
+            android:layout_below="@id/cal_list_room"
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
 
         <TextView
             android:id="@+id/prompt_evtime"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="@string/string_time"
-            android:layout_below="@id/prompt_evdate"
-            android:layout_marginTop="20dp"
+            android:layout_below="@id/month_spinner"
             android:layout_marginLeft="10dp"
-            />
-        <EditText
-            android:inputType="text|textCapWords|textAutoCorrect"
-            android:layout_height="wrap_content"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
+        <Spinner
+            android:id="@+id/hour_spinner"
             android:layout_width="wrap_content"
-            android:id="@+id/cal_list_time"
+            android:layout_height="wrap_content"
             android:layout_toRightOf="@id/prompt_evtime"
-            android:layout_below="@id/cal_list_date"
+            android:layout_below="@id/month_spinner"
             android:layout_marginLeft="10dp"
-            android:textSize="10dp"/>
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
+        <TextView
+            android:id="@+id/colon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:layout_below="@+id/month_spinner"
+            android:layout_toRightOf="@id/hour_spinner"
+            android:layout_marginTop="7dp"
+            android:textSize="21sp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"/>
+        <Spinner
+            android:id="@+id/minute_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/colon"
+            android:layout_below="@id/month_spinner"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
+        <Spinner
+            android:id="@+id/am_pm_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/minute_spinner"
+            android:layout_below="@id/month_spinner"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/string_desc"
             android:id="@+id/prompt_evdesc"
-            android:layout_below="@id/prompt_evtime"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_below="@id/hour_spinner"
+            android:layout_marginLeft="10dp"
+            android:textSize="21sp"
+            android:layout_marginTop="@dimen/half_it"/>
         <EditText
-            android:inputType="text|textCapWords|textAutoCorrect"
+            android:inputType="text|textAutoCorrect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/cal_list_desc"
             android:layout_toRightOf="@id/prompt_evdesc"
-            android:layout_below="@id/cal_list_time"
+            android:layout_below="@id/hour_spinner"
             android:layout_marginLeft="10dp"
-            android:textSize="15dp" />
+            android:textSize="18sp"
+            android:layout_marginTop="@dimen/half_it"/>
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
