@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.alfie_s_app;
 
 import android.app.IntentService;
 import android.app.Notification;
@@ -10,7 +10,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import androidx.core.app.NotificationCompat;
-
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -25,11 +24,13 @@ public class GeofenceTransition extends IntentService {
 
     private static final String TAG = GeofenceTransition.class.getSimpleName();
 
+    private String triggeredGeofence;
+
     public static final int GEOFENCE_NOTIFICATION_ID = 0;
     private static final String CHANNEL_ID = "event_notif";
-    private NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID);
+    private NotificationCompat.Builder notificationBuilder = new NotificationCompat
+            .Builder(this, CHANNEL_ID);
     private List<Geofence> geofenceList;
-
 
     public GeofenceTransition() {
         super(TAG);
@@ -49,17 +50,21 @@ public class GeofenceTransition extends IntentService {
         // Check if the transition type is of interest
         if ( geoFenceTransition == Geofence.GEOFENCE_TRANSITION_ENTER ) {
             // Get the geofence that were triggered
-            List<Geofence> triggeringGeofences = geofencingEvent.getTriggeringGeofences();
-            geofenceList = triggeringGeofences;
+            geofenceList = geofencingEvent.getTriggeringGeofences();
 
-            String geofenceTransitionDetails = getGeofenceTransitionDetails(geoFenceTransition, triggeringGeofences );
+            //get the single geofence from the list and search for the information in the database
+            triggeredGeofence = geofenceList.get(0).getRequestId();
+
+            String geofenceTransitionDetails = getGeofenceTransitionDetails(geoFenceTransition,
+                    geofenceList );
 
             // Send notification details as a String
             sendNotification( geofenceTransitionDetails );
         }
     }
 
-    private String getGeofenceTransitionDetails(int geoFenceTransition, List<Geofence> triggeringGeofences) {
+    private String getGeofenceTransitionDetails(int geoFenceTransition,
+                                                List<Geofence> triggeringGeofences) {
         // get the ID of each geofence triggered
         ArrayList<String> triggeringGeofencesList = new ArrayList<>();
         for ( Geofence geofence : triggeringGeofences ) {
@@ -81,9 +86,10 @@ public class GeofenceTransition extends IntentService {
         );
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addParentStack(MainActivity.class);
+        stackBuilder.addParentStack(HomePage.class);
         stackBuilder.addNextIntent(notificationIntent);
-        PendingIntent notificationPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent notificationPendingIntent = stackBuilder.getPendingIntent(0,
+                PendingIntent.FLAG_UPDATE_CURRENT);
 
 
         // Creating and sending Notification
@@ -97,7 +103,8 @@ public class GeofenceTransition extends IntentService {
             notificationChannel.enableLights( true ) ;
             notificationChannel.setLightColor(Color. RED );
             notificationChannel.enableVibration( true ) ;
-            notificationChannel.setVibrationPattern( new long []{ 100 , 200 , 300 , 400 , 500 , 400 , 300 , 200 , 400 }) ;
+            notificationChannel.setVibrationPattern( new long []{ 100 , 200 , 300 , 400 , 500 , 400
+                    , 300 , 200 , 400 }) ;
             notificationBuilder.setChannelId( CHANNEL_ID ) ;
             assert notificatioMng != null;
             notificatioMng.createNotificationChannel(notificationChannel) ;
@@ -110,21 +117,16 @@ public class GeofenceTransition extends IntentService {
     }
 
     // Create notification
-    private Notification createNotification(String msg, PendingIntent notificationPendingIntent) {
-        String triggeredGeofence;
-
-        for ( Geofence geofence : geofenceList ) {
-            triggeredGeofence = geofence.getRequestId();
-
-            notificationBuilder
-                    .setSmallIcon(R.drawable.anonheadlight)
-                    .setColor(Color.RED)
-                    .setContentTitle(msg)
-                    .setContentText("There are X event(s) at" + triggeredGeofence + "in the next 24 hours")
-                    .setContentIntent(notificationPendingIntent)
-                    .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE | Notification.DEFAULT_SOUND)
-                    .setAutoCancel(true);
-        }
+    private Notification createNotification(final String msg, final PendingIntent notificationPendingIntent) {
+        notificationBuilder
+                .setColor(Color.RED)
+                .setContentTitle(msg)
+                .setContentText("There will be event(s) at "+ triggeredGeofence +" in the next 24 hours! Click for more details.")
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setContentIntent(notificationPendingIntent)
+                .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE |
+                        Notification.DEFAULT_SOUND)
+                .setAutoCancel(true);
 
         return notificationBuilder.build();
     }
